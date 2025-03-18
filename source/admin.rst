@@ -182,6 +182,36 @@ NextGIS GeoServices использует одну точку подключен�
 * NGW_URL - адрес сервера NextGIS Web в виде схема-домен-порт
 * NGW_LOGIN и NGW_APIKEY - логин и пароль для доступа к NextGIS Web из сервиса для формирования изображений тайлов. У пользователя должны быть доступ на чтение к данным которые требуется кэшировать в геосервисах. 
 
+.. _nggs_prem_admin_proxy:
+
+Рекомендации по настройке обратного прокси-сервера
+---------------------------------------------------
+
+Для обеспечения HTTPS шифрования мы рекомендуем использовать обратный прокси-сервер на базе Nginx, для справки приведем пример фрагмента конфигурационного файла для geoservices.example.com:
+
+.. code-block::
+
+	server {
+	    server_name geoservices.example.com;
+	    # Директивы сервера: listen, ssl_* и пр.
+	
+	    location / {
+	        client_max_body_size 2G;
+	
+	        proxy_http_version 1.1;
+	        proxy_pass http://127.0.0.1:8088;
+	        proxy_set_header Host $http_host;
+	        proxy_set_header Upgrade $http_upgrade;
+	        proxy_set_header Connection $proxy_connection;
+	        proxy_set_header X-Forwarded-Proto $scheme;
+	        proxy_set_header X-Forwarded-For $remote_addr;
+	    }
+	}
+
+Директива client_max_body_size определяет максимальный размер загружаемого файла (в примере 2 GiB).
+
+
+
 .. _docs_geoserv_prem_admin_launch:
 
 Запуск
@@ -204,6 +234,25 @@ NextGIS GeoServices использует одну точку подключен�
 .. code-block::
 
 	http://localhost:8088
+
+.. _nggs_prem_admin_check:
+
+Проверка работоспособности
+-----------------------------
+
+Откройте в браузере веб-интерфейс NextGIS GeoServices по адресу, который вы выбрали.
+
+Должна открыться страница ввода имени пользователя и пароля. Введите имя пользователя admin и пароль, который вы указали в переменной ADMIN_PASSWORD.
+
+Если перейти на страницу *О проекте*, то страница должна выглядеть следующим образом.
+
+.. figure:: _static/geosop_set_about_ru.png
+   :name: geosop_set_about_pic
+   :align: center
+   :width: 16cm
+
+   Раздел "О проекте"
+
 
 .. _docs_geoserv_prem_admin_var:
 
