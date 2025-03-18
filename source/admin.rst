@@ -38,149 +38,59 @@ NextGIS GeoServices использует одну точку подключен�
 
 В случае если развертывание осуществляется на сервере без доступа к Интернет, то вместо этого шага свяжитесь со службой поддержки для получения архива образов в виде одного файла. Его нужно будет перенести на сервер и загрузить образы командой docker load.
 
+.. _nggs_prem_admin_installgs:
 
+Установка NextGIS GeoServices
+------------------------------
 
-
-.. _docs_geoserv_prem_admin_prep:
-
-Подготовка к установке GeoServices
------------------------------------
-
-На подготовительном этапе необходимо получить исходные коды. Наиболее простой способ это сделать - склонировать из git репозитория:
+На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (``docker-compose-2.16.1.tar.bz2``, где 2.16.1 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
 
 .. code-block::
 
-	git clone --depth 1 https://gitlab.com/nextgis_private/geoservices.git
-	cd geoservices
+	$ mkdir /srv/geoservices
+	$ cd /srv/geoservices
+	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.16.1.tar.bz2
+	$ tar jxf docker-compose-2.16.1.tar.bz2
+	Отредактируйте файл .env в текстовом редакторе заполнив значения переменных: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (должны иметь одинаковые значения), ADMIN_PASSWORD и SESSION_KEY. В итоге должно получится приблизительно следующее:
+	IMAGE_VERSION=2.16.1
+	IMAGE_BASE=cr.nextgis.com/geoservices
+	COMPOSE_BIND=0.0.0.0
+	
+	DEBUG=false
+	S3_SSL=false
+	EXT_SOURCES_SUPPORT=false
+	POSTGRES_USER=geoservices
+	SESSION_KEY=secret1
+	POSTGRES_PASSWORD=secret2
+	DB_PASSWORD=secret2
+	BM_DB_PASSWORD=secret2
+	ADMIN_PASSWORD=secret3
 
-Далее необходимо собрать образ СУБД с поддержкой  PostGIS (например, с названием registry.nextgis.com/postgis:3.3.2):
+После этого можно запускать стек Docker Compose, вначале рекомендуется запустить сервис postgres, подождать полминуты и затем уже запустить остальное:
 
 .. code-block::
 
-	docker build -t registry.nextgis.com/postgis:3.3.2 basemap
-
-На следующем шаге необходимо сформировать исходные данные для наполнения базовой картографической подложки:
-
-.. code-block::
-
-	docker build -t prepare-data -f basemap/Dockerfile-prepare basemap
-	docker run -it --rm -v $(pwd)/basemap:/work prepare-data
-
-Собрать образ веб-приложения (например, с названием registry.nextgis.com/geoservices:2.5.0):
-
-.. code-block::
-
-	docker build -t registry.nextgis.com/geoservices:2.5.0 .
-
-.. _docs_geoserv_prem_admin_setup:
-
-Настройка
-----------
-
-После успешной сборки всех образов и подготовки данных необходимо поправить docker-compose.yml:
-
-* Исправить названия образов в соответствии с заданными при их сборке (тэг image) 
-* Изменить переменную окружения SESSION_KEY на случайное текстовое значение (опциональное, если не указан или пустой - генерируется автоматически)
-* Исправить переменные окружения DB_PASSWORD и POSTGRES_PASSWORD на новый пароль (значения должны совпадать во всех вхождениях)
-* Исправить переменную окружения  ADMIN_PASSWORD на новый пароль
-* Исправить переменные окружения  S3_ACCESS_KEY/MINIO_ACCESS_KEY и S3_SECRET_KEY/MINIO_SECRET_KEY на новые пароли (значения должны быть разными для \*_ACCESS_KEY и \*_SECRET_KEY)
-* В команде запуска redis установить объем выделяемой памяти (не более доступной контейнеру, лучше на 1-2Гб меньше лимита). Например:
-
-	**nano docker-compose.yml**
-
-.. code-block::
-
-	version: '3.7'
-	services:
-	  app:
-	    image: registry.nextgis.com/geoservices:2.5.0
-	    depends_on:
-	      - "postgis"
-	      - "postgres"
-	      - "redis"
-	      - "s3"
-	    environment:
-	      SESSION_KEY: 5n3zczvhe3v0
-	      DB_TYPE: postgres
-	      DB_HOST: postgres
-	      DB_PASSWORD: b0apciz6p3n9
-	      REDIS_ENDPOINT: redis:6379
-	      ADMIN_PASSWORD: admin
-	      BM_DB_HOST: postgis
-	      DEBUG: "false"
-	      GIN_MODE: release
-	      S3_ACCESS_KEY: 8lo5m0wcteuf
-	      S3_SECRET_KEY: rro48pbjh6o8
-	      S3_ENDPOINT: s3:9000
-	      S3_SSL: "false"
-	      S3_DEFAULT_STORAGE_CLASS: REDUCED_REDUNDANCY
-	      S3_BUCKET_PREFIX: tiles
-	      EXT_TMS_SUPPORT: "true"
-	    volumes:
-	      - data:/work
-	    ports:
-	      - 8088:8088
-	    restart: always
+	$ docker compose up -d postgres && sleep 30      
+	[+] Running 3/3
+	 ✔ Network geoservices_default       Created         0.0s 
+	 ✔ Volume "geoservices_postgres"     Created         0.1s 
+	 ✔ Container geoservices-postgres-1  Started         4.2s
 	
-	
-	  postgres:
-	    image: postgres:15-alpine
-	    environment:
-	      POSTGRES_PASSWORD: b0apciz6p3n9
-	      POSTGRES_DB: geoservices
-	      POSTGRES_USER: geoservices
-	    volumes:
-	      - postgres:/var/lib/postgresql/data
-	    restart: always
-	
-	
-	  redis:
-	    image: redis:alpine
-	    command: "redis-server --maxmemory 20Gb --maxmemory-policy allkeys-lru --appendonly no"
-	    volumes:
-	      - redis:/data
-	    restart: always
-	
-	
-	  postgis:
-	    image: registry.nextgis.com/postgis:3.3.2
-	    environment:
-	      POSTGRES_PASSWORD: b0apciz6p3n9
-	      POSTGRES_DB: basemap
-	      POSTGRES_USER: geoservices
-	    volumes:
-	      - postgis:/var/lib/postgresql/data
-	    restart: always
-	
-	
-	  s3:
-	    image: minio/minio
-	    command: server /data
-	    environment:
-	      MINIO_ACCESS_KEY: 8lo5m0wcteuf
-	      MINIO_SECRET_KEY: rro48pbjh6o8
-	      MINIO_BROWSER: "false"
-	    volumes:
-	      - s3:/data
-	    restart: always
-	
-	
-	volumes:
-	  data: {}
-	  postgres: {}
-	  redis: {}
-	  s3: {}
-	  postgis: {}
-	
+	$ docker compose up -d
+	[+] Running 8/8
+	 ✔ Volume "geoservices_s3"           Created         0.0s 
+	 ✔ Volume "geoservices_secret"       Created         0.1s 
+	 ✔ Volume "geoservices_data"         Created         0.0s 
+	 ✔ Volume "geoservices_redis"        Created         0.1s 
+	 ✔ Container geoservices-postgres-1  Running         0.0s 
+	 ✔ Container geoservices-redis-1     Started         7.3s 
+	 ✔ Container geoservices-s3-1        Started         7.5s 
+	 ✔ Container geoservices-app-1       Started         5.9s
+
+На этом установка завершена, если используется HTTPS, то на этом этапе выполните настройку обратного прокси-сервера. Если нет, то сразу приступайте к проверке работоспособности.
 
 
 
-Для интеграции с внешними геосервисами для получения данных ПКК необходимо в переменные окружения контейнера app добавить переменную PKK_EXTERNAL_APIKEY с API ключом из вашего профиля на https://geoservices.nextgis.com.
-
-Для интеграции с NextGIS Web необходимо  в переменные окружения контейнера app добавить следующие переменные: NGW_URL, NGW_LOGIN, NGW_APIKEY.
-
-* NGW_URL - адрес сервера NextGIS Web в виде схема-домен-порт
-* NGW_LOGIN и NGW_APIKEY - логин и пароль для доступа к NextGIS Web из сервиса для формирования изображений тайлов. У пользователя должны быть доступ на чтение к данным которые требуется кэшировать в геосервисах. 
 
 .. _nggs_prem_admin_proxy:
 
