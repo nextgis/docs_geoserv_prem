@@ -9,6 +9,7 @@ NextGIS Geoservices on-premise
    :maxdepth: 2
 
    intro
+   sys_req
    auth
    services
    settings
