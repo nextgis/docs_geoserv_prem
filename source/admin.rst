@@ -6,173 +6,140 @@ Administrator manual for NextGIS GeoServices
 =====================================================
 
 Introduction
----------
+-------------
 
 This manual describes the process of deploying NextGIS GeoServices sowftware on-premise. Mainly it uses Docker platform and docker-compose tool. All steps are performed on Linux-based OS.
 
-.. _docs_geoserv_prem_admin_prep:
+.. _nggs_prem_admin_address:
 
-Preparation
------------
+Select connection addresses
+------------------------------
 
-First you need to get source codes. The easiest way is to clone them from a git repository:
+NextGIS GeoServices uses one HTTP (or HTTPS) entry. Users interact with the software via Web interface and API. The default value is http://server.example.com:8088 where server.example.com is the DNS name of the server where the software is deployed. If strictly necessary, the server IP address can be used instead of server.example.com.
 
-.. code-block::
+If your IT infrastructure allows for it, it is recommended to set up a reverse proxy for TLS encryption and using HTTPS. It is especially important if the software is to be accessed not just from the local network, but also from the Internet. In that case the addresses of the entry points depend on the settings of the reverse proxy.
 
-	git clone --depth 1 https://gitlab.com/nextgis_private/geoservices.git
-	cd geoservices
+Contact your IT department to choose addresses you wish to use and note them down, you'll need them later. The reverse proxy is set up by the client's IT department, it is not a responsibility of NextGIS company. The required parameters are cited below using Nginx as example.
 
-Next build DBMS image with PostGIS support (name example: registry.nextgis.com/postgis:3.3.2):
+.. _nggs_prem_admin_docker:
 
-.. code-block::
+Install and configure Docker
+---------------------------------
 
-	docker build -t registry.nextgis.com/postgis:3.3.2 basemap
+If the server does not yet have Docker Engine and Docker Compose installed, first you need to install them or update them to the latest versions:
 
-Next you need to prepare data for the basemap:
+* `Docker Engine <https://docs.docker.com/engine/install/>`_
+* `Docker Compose <https://docs.docker.com/compose/install/linux/>`_
 
-.. code-block::
+To get the images log in to NextGIS Container Registry with the username (example) and password (sesame) provided by NextGIS::
 
-	docker build -t prepare-data -f basemap/Dockerfile-prepare basemap
-	docker run -it --rm -v $(pwd)/basemap:/work prepare-data
+   $ docker login cr.nextgis.com -u example -p sesame
+   Login Succeeded
 
-Then build web application image (with a name like registry.nextgis.com/geoservices:2.5.0, for example):
+If the software is deployed to a server without Internet access, contact support for a single-file image archive instead. You'll need to transfer it to the server and load the images using 'docker load' command.
 
-.. code-block::
+.. _nggs_prem_admin_installgs:
 
-	docker build -t registry.nextgis.com/geoservices:2.5.0 .
+Install NextGIS GeoServices
+------------------------------
 
-.. _docs_geoserv_prem_admin_setup:
-
-Setting up
-----------
-
-After all images are successfully built and data is prepared, modify docker-compose.yml:
-
-* Change image names to those set during building (tag 'image') 
-* Change environment variable SESSION_KEY to a random text value (optional, if it is empty or not set, it generates automatically)
-* Change environment variables DB_PASSWORD and POSTGRES_PASSWORD to new password (value must be the same in all occurrences)
-* Change environment variable ADMIN_PASSWORD to new password
-* Change environment variables S3_ACCESS_KEY/MINIO_ACCESS_KEY and S3_SECRET_KEY/MINIO_SECRET_KEY to new passwords (values must be different for \*_ACCESS_KEY and \*_SECRET_KEY)
-* In the 'redis' launch command set the memory capacity (within limits available for the container, best set it 1-2 GiB lower than limit). Example:
-
-**nano docker-compose.yml**
+On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (``docker-compose-2.16.1.tar.bz2``, where 2.16.1 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
 
 .. code-block::
 
-	version: '3.7'
-	services:
-	  app:
-	    image: registry.nextgis.com/geoservices:2.5.0
-	    depends_on:
-	      - "postgis"
-	      - "postgres"
-	      - "redis"
-	      - "s3"
-	    environment:
-	      SESSION_KEY: 5n3zczvhe3v0
-	      DB_TYPE: postgres
-	      DB_HOST: postgres
-	      DB_PASSWORD: b0apciz6p3n9
-	      REDIS_ENDPOINT: redis:6379
-	      ADMIN_PASSWORD: admin
-	      BM_DB_HOST: postgis
-	      DEBUG: "false"
-	      GIN_MODE: release
-	      S3_ACCESS_KEY: 8lo5m0wcteuf
-	      S3_SECRET_KEY: rro48pbjh6o8
-	      S3_ENDPOINT: s3:9000
-	      S3_SSL: "false"
-	      S3_DEFAULT_STORAGE_CLASS: REDUCED_REDUNDANCY
-	      S3_BUCKET_PREFIX: tiles
-	      EXT_TMS_SUPPORT: "true"
-	    volumes:
-	      - data:/work
-	    ports:
-	      - 8088:8088
-	    restart: always
+	$ mkdir /srv/geoservices
+	$ cd /srv/geoservices
+	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.16.1.tar.bz2
+	$ tar jxf docker-compose-2.16.1.tar.bz2
+	Edit the .env file in a text editor and enter the values for: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (must have the same values), ADMIN_PASSWORD and SESSION_KEY. In the end you should get something like this:
+	IMAGE_VERSION=2.16.1
+	IMAGE_BASE=cr.nextgis.com/geoservices
+	COMPOSE_BIND=0.0.0.0
 	
-	
-	  postgres:
-	    image: postgres:15-alpine
-	    environment:
-	      POSTGRES_PASSWORD: b0apciz6p3n9
-	      POSTGRES_DB: geoservices
-	      POSTGRES_USER: geoservices
-	    volumes:
-	      - postgres:/var/lib/postgresql/data
-	    restart: always
-	
-	
-	  redis:
-	    image: redis:alpine
-	    command: "redis-server --maxmemory 20gb --maxmemory-policy allkeys-lru --appendonly no"
-	    volumes:
-	      - redis:/data
-	    restart: always
-	
-	
-	  postgis:
-	    image: registry.nextgis.com/postgis:3.3.2
-	    environment:
-	      POSTGRES_PASSWORD: b0apciz6p3n9
-	      POSTGRES_DB: basemap
-	      POSTGRES_USER: geoservices
-	    volumes:
-	      - postgis:/var/lib/postgresql/data
-	    restart: always
-	
-	
-	  s3:
-	    image: minio/minio
-	    command: server /data
-	    environment:
-	      MINIO_ACCESS_KEY: 8lo5m0wcteuf
-	      MINIO_SECRET_KEY: rro48pbjh6o8
-	      MINIO_BROWSER: "false"
-	    volumes:
-	      - s3:/data
-	    restart: always
-	
-	
-	volumes:
-	  data: {}
-	  postgres: {}
-	  redis: {}
-	  s3: {}
-	  postgis: {}
-	
+	DEBUG=false
+	S3_SSL=false
+	EXT_SOURCES_SUPPORT=false
+	POSTGRES_USER=geoservices
+	SESSION_KEY=secret1
+	POSTGRES_PASSWORD=secret2
+	DB_PASSWORD=secret2
+	BM_DB_PASSWORD=secret2
+	ADMIN_PASSWORD=secret3
 
-
-
-If you need PKK data for integration with external geo services, then to the environment variables of the container 'app' add variable PKK_EXTERNAL_APIKEY with the API key of your profile on https://geoservices.nextgis.com.
-
-For integration with NextGIS Web  to the environment variables of the container 'app' add the following variables: NGW_URL, NGW_LOGIN, NGW_APIKEY.
-
-* NGW_URL - address of NextGIS Web server in 'scheme-host-port' format
-* NGW_LOGIN and NGW_APIKEY - username and password for NextGIS Web This user must have permission to read data that has to be cached in GeoServices. 
-
-.. _docs_geoserv_prem_admin_launch:
-
-Launch
----------
-
-To launch and check functionality of the stack, run the following code:
+After that you can launch the Docker Compose stack. We recommend launching postgres service first, then after about 30 seconds launch the rest:
 
 .. code-block::
 
-	docker-compose up
+	$ docker compose up -d postgres && sleep 30      
+	[+] Running 3/3
+	 ✔ Network geoservices_default       Created         0.0s 
+	 ✔ Volume "geoservices_postgres"     Created         0.1s 
+	 ✔ Container geoservices-postgres-1  Started         4.2s
+	
+	$ docker compose up -d
+	[+] Running 8/8
+	 ✔ Volume "geoservices_s3"           Created         0.0s 
+	 ✔ Volume "geoservices_secret"       Created         0.1s 
+	 ✔ Volume "geoservices_data"         Created         0.0s 
+	 ✔ Volume "geoservices_redis"        Created         0.1s 
+	 ✔ Container geoservices-postgres-1  Running         0.0s 
+	 ✔ Container geoservices-redis-1     Started         7.3s 
+	 ✔ Container geoservices-s3-1        Started         7.5s 
+	 ✔ Container geoservices-app-1       Started         5.9s
 
-To launch in service mode:
+This completes the installation. If you use HTTPS, next configure the reverse proxy server. Otherwise proceed to operability check.
+
+
+
+
+.. _nggs_prem_admin_proxy:
+
+Recommendations for reverse proxy setup
+---------------------------------------------------
+
+To use HTTPS encryption we recommend setting up a reverse proxy server based on Nginx. For reference here's a fragment of the configuration file for geoservices.example.com:
 
 .. code-block::
 
-	docker-compose up -d
+	server {
+	    server_name geoservices.example.com;
+	    # Server directives: listen, ssl_* etc
+	
+	    location / {
+	        client_max_body_size 2G;
+	
+	        proxy_http_version 1.1;
+	        proxy_pass http://127.0.0.1:8088;
+	        proxy_set_header Host $http_host;
+	        proxy_set_header Upgrade $http_upgrade;
+	        proxy_set_header Connection $proxy_connection;
+	        proxy_set_header X-Forwarded-Proto $scheme;
+	        proxy_set_header X-Forwarded-For $remote_addr;
+	    }
+	}
 
-After you launched it in browser open service address with port set to 8088. For example,
+The client_max_body_size directive defines the max size of the upload file (2 GiB in our example).
 
-.. code-block::
 
-	http://localhost:8088
+
+.. _nggs_prem_admin_check:
+
+Operability check
+-----------------------------
+
+In a Web browser open the Web interface of NextGIS GeoServices using the URL you've chosen.
+
+A sign-in form should appear. Enter the username 'admin' and the password that you set in the ADMIN_PASSWORD variable.
+
+Go to the About page, it must look like this:
+
+.. figure:: _static/geosop_set_about_en.png
+   :name: geosop_set_about_pic
+   :align: center
+   :width: 16cm
+
+   About page
+
 
 .. _docs_geoserv_prem_admin_var:
 
