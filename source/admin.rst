@@ -12,14 +12,14 @@ This manual describes the process of deploying NextGIS GeoServices sowftware on-
 
 .. _nggs_prem_admin_address:
 
-Select connection addresses
+Select endpoints
 ------------------------------
 
-NextGIS GeoServices uses one HTTP (or HTTPS) entry. Users interact with the software via Web interface and API. The default value is http://server.example.com:8088 where server.example.com is the DNS name of the server where the software is deployed. If strictly necessary, the server IP address can be used instead of server.example.com.
+NextGIS GeoServices uses one HTTP (or HTTPS) endpoint. Users interact with the software via Web interface and API. The default value is http://server.example.com:8088 where server.example.com is the DNS name of the server where the software is deployed. If strictly necessary, the server IP address can be used instead of server.example.com.
 
-If your IT infrastructure allows for it, it is recommended to set up a reverse proxy for TLS encryption and using HTTPS. It is especially important if the software is to be accessed not just from the local network, but also from the Internet. In that case the addresses of the entry points depend on the settings of the reverse proxy.
+If your IT infrastructure allows for it, it is recommended to set up a reverse proxy for TLS encryption and using HTTPS. It is especially important if the software is to be accessed not just from the local network, but also from the Internet. In that case the endpoints depend on the settings of the reverse proxy.
 
-Contact your IT department to choose addresses you wish to use and note them down, you'll need them later. The reverse proxy is set up by the client's IT department, it is not a responsibility of NextGIS company. The required parameters are cited `below using Nginx as example <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-proxy>`_.
+Contact your IT department to choose endpoints you wish to use and note them down, you'll need them later. The reverse proxy is set up by the client's IT department, it is not a responsibility of NextGIS company. The required parameters are cited `below using Nginx as example <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-proxy>`_.
 
 .. _nggs_prem_admin_docker:
 
