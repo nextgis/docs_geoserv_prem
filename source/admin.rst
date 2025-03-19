@@ -19,7 +19,7 @@ NextGIS GeoServices uses one HTTP (or HTTPS) entry. Users interact with the soft
 
 If your IT infrastructure allows for it, it is recommended to set up a reverse proxy for TLS encryption and using HTTPS. It is especially important if the software is to be accessed not just from the local network, but also from the Internet. In that case the addresses of the entry points depend on the settings of the reverse proxy.
 
-Contact your IT department to choose addresses you wish to use and note them down, you'll need them later. The reverse proxy is set up by the client's IT department, it is not a responsibility of NextGIS company. The required parameters are cited below using Nginx as example.
+Contact your IT department to choose addresses you wish to use and note them down, you'll need them later. The reverse proxy is set up by the client's IT department, it is not a responsibility of NextGIS company. The required parameters are cited `below using Nginx as example <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-proxy>`_.
 
 .. _nggs_prem_admin_docker:
 
@@ -87,7 +87,8 @@ After that you can launch the Docker Compose stack. We recommend launching postg
 	 ✔ Container geoservices-s3-1        Started         7.5s 
 	 ✔ Container geoservices-app-1       Started         5.9s
 
-This completes the installation. If you use HTTPS, next configure the reverse proxy server. Otherwise proceed to operability check.
+This completes the installation. If you use HTTPS, next `configure the reverse proxy server <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-proxy>`_. Otherwise proceed to `operability check <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-check>`_.
+
 
 
 
