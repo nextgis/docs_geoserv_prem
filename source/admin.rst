@@ -122,29 +122,6 @@ NextGIS GeoServices использует одну точку подключен�
 
 
 
-.. _docs_geoserv_prem_admin_launch:
-
-Запуск
----------
-
-Для запуска и проверки корректности работы стэка необходимо выполнить:
-
-.. code-block::
-
-	docker-compose up
-
-Для запуска в режиме сервиса:
-
-.. code-block::
-
-	docker-compose up -d
-
-После запуска в браузере открыть адрес сервиса с указанием порта 8088. Например,
-
-.. code-block::
-
-	http://localhost:8088
-
 .. _nggs_prem_admin_check:
 
 Проверка работоспособности
