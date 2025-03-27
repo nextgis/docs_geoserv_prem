@@ -148,14 +148,14 @@ When all files are uploaded and the boundaries are set, press **Submit new basem
 If you use custom PBF, upload progress is displayed on the same tab and in the Log tab. After the process is completed successfully, the progress bar becomes green and a tick appears at the end.
 
 .. figure:: _static/geosop_base_progress_en.png
-   :name: geosop_base3
+   :name: geosop_base_progress_pic
    :align: center
    :width: 16cm
 
    Uploading custom file
 
 .. figure:: _static/geosop_base_complete_en.png
-   :name: geosop_base3
+   :name: geosop_base_complete_pic
    :align: center
    :width: 16cm
 
