@@ -3,7 +3,7 @@
 .. _docs_geoserv_prem_auth:
 
 Authorization
-============
+=============
 
 To start working with the app user needs to log in.
 Enter username and password in the corresponding fields.
