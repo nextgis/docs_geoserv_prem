@@ -116,7 +116,7 @@
 Перейдите во вкладку "Сидирование" и нажмите **Создать новую задачу**.
 
 .. figure:: _static/geosop_seeding_create_task_ru.png
-   :name: 
+   :name: geosop_seeding_create_task_pic
    :align: center
    :width: 20cm
 
@@ -138,9 +138,9 @@
 * Охват - можно загрузить область из файла или нарисовать на карте.
 
 .. figure:: _static/geosop_seeding_task_settings_ru.png
-   :name: 
+   :name: geosop_seeding_task_settings_pic
    :align: center
-   :width: 20cm
+   :width: 14cm
 
    Параметры задачи сидирования
 
@@ -149,7 +149,7 @@
 Задача появится на вкладке. Здесь можно отслеживать статус её выполнения: в очереди, выполняется, завершена, завершена с ошибкой.
 
 .. figure:: _static/geosop_seeding_task_status_ru.png
-   :name: 
+   :name: geosop_seeding_task_status_pic
    :align: center
    :width: 20cm
 
