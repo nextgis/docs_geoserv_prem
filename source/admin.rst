@@ -1,4 +1,4 @@
-.. sectionauthor:: Роман Гайнуллов <roman.gainullov@nextgis.ru>
+
 
 .. _docs_geoserv_prem_admin:
 
@@ -143,3 +143,16 @@ Go to the About page, it must look like this:
 
 
 
+.. _nggs_prem_admin_cache:
+
+Clear cache
+------------
+
+After a service is deleted, its cache remains. To remove the cache delete the following folders:
+
+.. code-block::
+
+   /data/geoservices/ras/$ID/
+   /data/geoservices/vec/$ID/
+
+``$ID`` is the ID of the deleted service. The ``vec`` folder is formed only for basemap services that generate vector tiles.
