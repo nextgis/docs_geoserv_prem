@@ -35,6 +35,8 @@ To create a new group, press **Add** and enter a name for it.
 
    Adding new service group
 
+When you delete a service, its cache remains on the server. It can be `deleted by the administrator <https://docs.nextgis.com/docs_geoserv_prem/source/admin.html#clear-cache>`_.
+
 NGW Web Maps
 ------------
 
