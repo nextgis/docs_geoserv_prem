@@ -43,16 +43,16 @@ If the software is deployed to a server without Internet access, contact support
 Install NextGIS GeoServices
 ------------------------------
 
-On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (``docker-compose-2.16.1.tar.bz2``, where 2.16.1 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
+On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (``docker-compose-2.18.0.tar.bz2``, where 2.18.0 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
 
 .. code-block::
 
 	$ mkdir /srv/geoservices
 	$ cd /srv/geoservices
-	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.16.1.tar.bz2
-	$ tar jxf docker-compose-2.16.1.tar.bz2
+	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.18.0.tar.bz2
+	$ tar jxf docker-compose-2.18.0.tar.bz2
 	Edit the .env file in a text editor and enter the values for: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (must have the same values), ADMIN_PASSWORD and SESSION_KEY. In the end you should get something like this:
-	IMAGE_VERSION=2.16.1
+	IMAGE_VERSION=2.18.0
 	IMAGE_BASE=cr.nextgis.com/geoservices
 	COMPOSE_BIND=0.0.0.0
 	
@@ -78,14 +78,15 @@ After that you can launch the Docker Compose stack. We recommend launching postg
 	
 	$ docker compose up -d
 	[+] Running 8/8
-	 ✔ Volume "geoservices_s3"           Created         0.0s 
-	 ✔ Volume "geoservices_secret"       Created         0.1s 
-	 ✔ Volume "geoservices_data"         Created         0.0s 
-	 ✔ Volume "geoservices_redis"        Created         0.1s 
-	 ✔ Container geoservices-postgres-1  Running         0.0s 
-	 ✔ Container geoservices-redis-1     Started         7.3s 
-	 ✔ Container geoservices-s3-1        Started         7.5s 
-	 ✔ Container geoservices-app-1       Started         5.9s
+	 ✔ Volume "geoservices_s3"                Created         0.0s 
+	 ✔ Volume "geoservices_secret"            Created         0.1s 
+	 ✔ Volume "geoservices_data"              Created         0.0s 
+	 ✔ Volume "geoservices_redis"             Created         0.1s 
+	 ✔ Container geoservices-postgres-1       Running         0.0s 
+	 ✔ Container geoservices-redis-1          Started         7.3s 
+	 ✔ Container geoservices-s3-1             Started         7.5s 
+	 ✔ Container geoservices-node-renderer-1  Started         0.2s 
+	 ✔ Container geoservices-app-1            Started         5.9s
 
 This completes the installation. If you use HTTPS, next `configure the reverse proxy server <https://docs.nextgis.com/docs_geoserv_prem/source/admin.html#nggs-prem-admin-proxy>`_. Otherwise proceed to `operability check <https://docs.nextgis.com/docs_geoserv_prem/source/admin.html#nggs-prem-admin-check>`_.
 
