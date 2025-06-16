@@ -41,16 +41,16 @@ NextGIS GeoServices использует одну точку подключен�
 Установка NextGIS GeoServices
 ------------------------------
 
-На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (``docker-compose-2.16.1.tar.bz2``, где 2.16.1 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
+На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (``docker-compose-2.18.0.tar.bz2``, где 2.18.0 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
 
 .. code-block::
 
 	$ mkdir /srv/geoservices
 	$ cd /srv/geoservices
-	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.16.1.tar.bz2
-	$ tar jxf docker-compose-2.16.1.tar.bz2
+	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.18.0.tar.bz2
+	$ tar jxf docker-compose-2.18.0.tar.bz2
 	Отредактируйте файл .env в текстовом редакторе заполнив значения переменных: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (должны иметь одинаковые значения), ADMIN_PASSWORD и SESSION_KEY. В итоге должно получится приблизительно следующее:
-	IMAGE_VERSION=2.16.1
+	IMAGE_VERSION=2.18.0
 	IMAGE_BASE=cr.nextgis.com/geoservices
 	COMPOSE_BIND=0.0.0.0
 	
@@ -76,14 +76,15 @@ NextGIS GeoServices использует одну точку подключен�
 	
 	$ docker compose up -d
 	[+] Running 8/8
-	 ✔ Volume "geoservices_s3"           Created         0.0s 
-	 ✔ Volume "geoservices_secret"       Created         0.1s 
-	 ✔ Volume "geoservices_data"         Created         0.0s 
-	 ✔ Volume "geoservices_redis"        Created         0.1s 
-	 ✔ Container geoservices-postgres-1  Running         0.0s 
-	 ✔ Container geoservices-redis-1     Started         7.3s 
-	 ✔ Container geoservices-s3-1        Started         7.5s 
-	 ✔ Container geoservices-app-1       Started         5.9s
+	 ✔ Volume "geoservices_s3"                Created         0.0s 
+	 ✔ Volume "geoservices_secret"            Created         0.1s 
+	 ✔ Volume "geoservices_data"              Created         0.0s 
+	 ✔ Volume "geoservices_redis"             Created         0.1s 
+	 ✔ Container geoservices-postgres-1       Running         0.0s 
+	 ✔ Container geoservices-redis-1          Started         7.3s 
+	 ✔ Container geoservices-s3-1             Started         7.5s 
+	 ✔ Container geoservices-node-renderer-1  Started         0.2s 
+	 ✔ Container geoservices-app-1            Started         5.9s
 
 На этом установка завершена, если используется HTTPS, то на этом этапе выполните `настройку обратного прокси-сервера <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-proxy>`_. Если нет, то сразу приступайте к `проверке работоспособности <https://docs.nextgis.ru/docs_geoserv_prem/source/admin.html#nggs-prem-admin-check>`_.
 
