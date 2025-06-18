@@ -1,5 +1,3 @@
-.. sectionauthor:: Роман Гайнуллов <roman.gainullov@nextgis.ru>
-
 .. _docs_geoserv_prem_settings:
 
 Settings
@@ -101,67 +99,20 @@ To create a User group, in the list of groups press **Add**. Enter the name for 
 Basemap
 --------------
 
-In this section you can upload data and set boundaries for the default basemap tile service.
+In this section you can upload data that will be used for basemap services.
 
-Input:
+You can upload a PBF file or choose an area from the dropdown list. If you use custom PBF, upload progress is displayed on the same tab and in the Log tab. 
 
-* Basemap file
-* Boundaries
+When the files are uploaded, press **Submit new basemap data** on the top of the page. 
 
-For **Basemap file** you can upload a PBF file or choose an area from the dropdown list.
-
-.. figure:: _static/geosop_base_mapfile_en.png
-   :name: geosop_base1
-   :align: center
-   :width: 16cm
-
-   Two ways of selecting basemap: from list and from file
-
-You can set the **Boundary** for the service area in several ways:
-
-* draw it on the map in the interface;
-* upload a (multi)polygon vector file in GeoJSON format.
-
-If you select an area from the list, its boundaries will be set automatically.
-
-.. important::
-   If the boundary is not set, the next data base update will include data of the entire globe, not just the previously uploaded PBF. This would take much more storage space on your device.
-
-.. figure:: _static/geosop_base_boundary_en.png
-   :name: geosop_base2
-   :align: center
-   :width: 16cm
-
-   Ways to set up boundary for basemap
-
-You can modify the boundary or delete it (**Reset map** button) and start from scratch.
-
-When all files are uploaded and the boundaries are set, press **Submit new basemap data** on the top of the page. The process of creating tile service will begin.
-
-.. figure:: _static/geosop_base_submit_en.png
+.. figure:: _static/geosop_base_submit_en_2.png
    :name: geosop_base4
    :align: center
    :width: 16cm
 
-   Submit new Basemap data
+   Submitting new Basemap data
 
-If you use custom PBF, upload progress is displayed on the same tab and in the Log tab. After the process is completed successfully, the progress bar becomes green and a tick appears at the end.
-
-.. figure:: _static/geosop_base_progress_en.png
-   :name: geosop_base_progress_pic
-   :align: center
-   :width: 16cm
-
-   Uploading custom file
-
-.. figure:: _static/geosop_base_complete_en.png
-   :name: geosop_base_complete_pic
-   :align: center
-   :width: 16cm
-
-   Upload of custom file complete
-
-In the Log the process will be marked by a green dot.
+When the process is finished, it will be marked by a green dot in the Log .
 
 .. figure:: _static/geosop_base_log_en.png
    :name: geosop_base5
@@ -170,7 +121,9 @@ In the Log the process will be marked by a green dot.
 
    Upload progress status in the Log tab
 
-Default basemap that you configured can be found in the Services section in the Public group. Use the link for the tile service XYZ to add it to external software such as NextGIS Web or QGIS. 
+Default basemap that you configured can be found in the Public service group. Use the link for the tile service XYZ to add it to external software such as NextGIS Web or QGIS. 
+
+You can use the basemap data to create more services.
 
 .. figure:: _static/geosop_base_XYZ_en.png
    :name: geosop_base6
