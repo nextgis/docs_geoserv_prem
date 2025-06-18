@@ -35,6 +35,23 @@ To create a new group, press **Add** and enter a name for it.
 
    Adding new service group
 
+You can move the services between groups, the only exception is the Public group, its contents cannot be modified.
+
+.. _gs_new_service:
+
+Add service
+-----------
+
+To create a new service, open the group you wish to add it to and press **Create service**.
+
+Three types of services are available:
+
+* NGW - it uses a Web Map created on the NextGIS Web platform as a source;
+* External - TMS from a third-party source;
+* Basemap - based on OpenStreetMap data uploaded as PBF in the `Basemap settings <https://docs.nextgis.com/docs_geoserv_prem/source/settings.html#basemap>`_.
+
+The tiles for a newly created service are generated when first queried, so the first user of the service may experience a delay in displaying the map. To avoid it, you can `generate the tiles beforehand <https://docs.nextgis.com/docs_geoserv_prem/source/services.html#seeding>`_.
+
 When you delete a service, its cache remains on the server. It can be `deleted by the administrator <https://docs.nextgis.com/docs_geoserv_prem/source/admin.html#clear-cache>`_.
 
 NGW Web Maps
@@ -99,6 +116,37 @@ The newly created service will appear in the selected group. Service can be modi
    :width: 20cm
 
    Newly created TMS sevice in the group
+
+Basemap service
+----------------
+
+This type of service is based on OpenStreetMap data in PBF format. It can be uploaded in the `basemap settings <https://docs.nextgis.com/docs_geoserv_prem/source/settings.html#basemap>`_.
+
+You can use one dataset to create multiple services with varying extent, style, zoom levels etc.
+
+Press **Create service** in the service group. Select "basemap" as type.
+
+Configure the following parameters:
+
+* Name
+* Minimum zoom level
+* Maximum zoom level
+* Area
+* Select OpenStreetMap layers to be included in this service
+* Pick a style or upload a custom one as JSON file
+
+Press **Save**.
+
+Basemap services can be added to QGIS both as raster tiles and vector tiles. Vector tiles can be handy if you want more control over the labels.
+
+To add vector tiles to QGIS create a new connection and enter the style URL and the Vector XYZ URL of the service (see :numref:`geosop_vector_tiles`).
+
+.. figure:: _static/geosop_base_XYZ_en.png
+   :name: geosop_vector_tiles
+   :align: center
+   :width: 20cm
+
+   Links of the default basemap service
 
 .. _gs_prem_seed:
 
