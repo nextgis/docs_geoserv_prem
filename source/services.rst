@@ -46,9 +46,9 @@ To create a new service, open the group you wish to add it to and press **Create
 
 Three types of services are available:
 
-* NGW - it uses a Web Map created on the NextGIS Web platform as a source;
-* External - TMS from a third-party source;
-* Basemap - based on OpenStreetMap data uploaded as PBF in the `Basemap settings <https://docs.nextgis.com/docs_geoserv_prem/source/settings.html#basemap>`_.
+* `NGW <https://docs.nextgis.com/docs_geoserv_prem/source/services.html#ngw-web-maps>`_- it uses a Web Map created on the NextGIS Web platform as a source;
+* `External <https://docs.nextgis.com/docs_geoserv_prem/source/services.html#external-tms>`_ - TMS from a third-party source;
+* `Basemap <https://docs.nextgis.com/docs_geoserv_prem/source/services.html#basemap-service>`_ - based on OpenStreetMap data uploaded as PBF in the `Basemap settings <https://docs.nextgis.com/docs_geoserv_prem/source/settings.html#basemap>`_.
 
 The tiles for a newly created service are generated when first queried, so the first user of the service may experience a delay in displaying the map. To avoid it, you can `generate the tiles beforehand <https://docs.nextgis.com/docs_geoserv_prem/source/services.html#seeding>`_.
 
