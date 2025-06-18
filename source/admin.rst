@@ -8,7 +8,7 @@ Administrator manual for NextGIS GeoServices
 Introduction
 -------------
 
-This manual describes the process of deploying NextGIS GeoServices sowftware on-premise. Mainly it uses Docker platform and docker-compose tool. All steps are performed on Linux-based OS.
+This manual describes the process of deploying NextGIS GeoServices software on-premise. Mainly it uses Docker platform and docker-compose tool. All steps are performed on Linux-based OS.
 
 .. _nggs_prem_admin_address:
 
