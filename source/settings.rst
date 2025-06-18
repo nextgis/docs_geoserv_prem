@@ -123,7 +123,7 @@ When the process is finished, it will be marked by a green dot in the Log .
 
 Default basemap that you configured can be found in the Public service group. Use the link for the tile service XYZ to add it to external software such as NextGIS Web or QGIS. 
 
-You can use the basemap data to create more services.
+You can use the basemap data to `create more services <https://docs.nextgis.com/docs_geoserv_prem/source/services.html#basemap-service>`_.
 
 .. figure:: _static/geosop_base_XYZ_en.png
    :name: geosop_base6
