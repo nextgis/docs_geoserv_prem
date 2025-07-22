@@ -41,16 +41,16 @@ NextGIS GeoServices использует одну точку подключен�
 Установка NextGIS GeoServices
 ------------------------------
 
-На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (``docker-compose-2.18.0.tar.bz2``, где 2.18.0 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
+На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (``docker-compose-2.19.0.tar.bz2``, где 2.19.0 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
 
 .. code-block::
 
 	$ mkdir /srv/geoservices
 	$ cd /srv/geoservices
-	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.18.0.tar.bz2
-	$ tar jxf docker-compose-2.18.0.tar.bz2
+	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.19.0.tar.bz2
+	$ tar jxf docker-compose-2.19.0.tar.bz2
 	Отредактируйте файл .env в текстовом редакторе заполнив значения переменных: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (должны иметь одинаковые значения), ADMIN_PASSWORD и SESSION_KEY. В итоге должно получится приблизительно следующее:
-	IMAGE_VERSION=2.18.0
+	IMAGE_VERSION=2.19.0
 	IMAGE_BASE=cr.nextgis.com/geoservices
 	COMPOSE_BIND=0.0.0.0
 	
