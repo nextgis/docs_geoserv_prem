@@ -24,7 +24,7 @@ Contact your IT department to choose endpoints you wish to use and note them dow
 .. _nggs_prem_admin_docker:
 
 Install and configure Docker
----------------------------------
+----------------------------
 
 If the server does not yet have Docker Engine and Docker Compose installed, first you need to install them or update them to the latest versions:
 
@@ -41,9 +41,9 @@ If the software is deployed to a server without Internet access, contact support
 .. _nggs_prem_admin_installgs:
 
 Install NextGIS GeoServices
-------------------------------
+---------------------------
 
-On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (``docker-compose-2.19.0.tar.bz2``, where 2.19.0 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
+On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (`docker-compose-2.19.0.tar.bz2 <https://nextgis.com/onpremise/geoservices/docker-compose-2.19.0.tar.bz2>`_, where 2.19.0 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
 
 .. code-block::
 
@@ -51,7 +51,7 @@ On the server where you plan to deploy GeoServices, create the ``/srv/geoservice
 	$ cd /srv/geoservices
 	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.19.0.tar.bz2
 	$ tar jxf docker-compose-2.19.0.tar.bz2
-	Edit the .env file in a text editor and enter the values for: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (must have the same values), ADMIN_PASSWORD and SESSION_KEY. In the end you should get something like this:
+	Edit the .env file in a text editor and enter the values for these environmental variables: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (must have the same values), ADMIN_PASSWORD and SESSION_KEY. In the end you should get something like this:
 	IMAGE_VERSION=2.19.0
 	IMAGE_BASE=cr.nextgis.com/geoservices
 	COMPOSE_BIND=0.0.0.0
@@ -66,7 +66,15 @@ On the server where you plan to deploy GeoServices, create the ``/srv/geoservice
 	BM_DB_PASSWORD=secret2
 	ADMIN_PASSWORD=secret3
 
-After that you can launch the Docker Compose stack. We recommend launching postgres service first, then after about 30 seconds launch the rest:
+To connect NextGIS Geoservices to your NextGIS Web instance also add these environmental variables: 
+
+* NGW_URL - your company WEB GIS url, i.e. https://demo.nextgis.com.
+* NGW_LOGIN - user name with sufficient permissions, if empty - guest connection will be used.
+* NGW_APIKEY - user password.
+
+Add these variables to docker-compose using template above.
+
+After this launch the Docker Compose stack. We recommend launching postgres service first, then after about 30 seconds launch the rest:
 
 .. code-block::
 
