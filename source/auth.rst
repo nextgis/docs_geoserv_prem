@@ -16,10 +16,7 @@
 
    Авторизация в NextGIS GeoServices on-premise
 
-GeoServices on-premise (далее - Геосервисы) интегрированы с сервисом авторизации `NextGIS ID on-premise <https://docs.nextgis.ru/docs_ngid/source/index.html>`_, который по умолчанию разворачивается вместе с ПО.
-Таким образом добавленные в `Команду <https://docs.nextgis.ru/docs_ngid/source/ngidop.html#ngidop-teams>`_ пользователи также получают доступ в Геосервисы.
-
-Вместе с этим Администратор имеет возможность добавлять локальных пользователей внутри самих Геосервисов в разделе Настройки.
+Администратор имеет возможность добавлять локальных пользователей внутри самих Геосервисов в разделе Настройки.
 
 .. figure:: _static/geosop_users.png
    :name: geosop_users
