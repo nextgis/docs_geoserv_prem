@@ -41,7 +41,7 @@ NextGIS GeoServices использует одну точку подключен�
 Установка NextGIS GeoServices
 ------------------------------
 
-На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (``docker-compose-2.19.0.tar.bz2``, где 2.19.0 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
+На сервере, где планируется развернуть GeoServices, создайте директорию ``/srv/geoservices`` и перейдите в нее, скачайте шаблон конфигурации (`docker-compose-2.19.0.tar.bz2 <https://nextgis.com/onpremise/geoservices/docker-compose-2.19.0.tar.bz2>`_, где 2.19.0 - текущая версия) и распакуйте его. Если установка производится на сервере без доступа в Интернет, скачайте файл на другом ПК и перенесите его на сервер.
 
 .. code-block::
 
@@ -49,7 +49,7 @@ NextGIS GeoServices использует одну точку подключен�
 	$ cd /srv/geoservices
 	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.19.0.tar.bz2
 	$ tar jxf docker-compose-2.19.0.tar.bz2
-	Отредактируйте файл .env в текстовом редакторе заполнив значения переменных: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (должны иметь одинаковые значения), ADMIN_PASSWORD и SESSION_KEY. В итоге должно получится приблизительно следующее:
+	Отредактируйте файл .env в текстовом редакторе заполнив значения переменных окружения: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (должны иметь одинаковые значения), ADMIN_PASSWORD и SESSION_KEY. В итоге должно получится приблизительно следующее:
 	IMAGE_VERSION=2.19.0
 	IMAGE_BASE=cr.nextgis.com/geoservices
 	COMPOSE_BIND=0.0.0.0
@@ -63,6 +63,14 @@ NextGIS GeoServices использует одну точку подключен�
 	DB_PASSWORD=secret2
 	BM_DB_PASSWORD=secret2
 	ADMIN_PASSWORD=secret3
+
+Для подключения к NextGIS Web дополнительно задайте следующие переменные окружения: 
+
+* NGW_URL - адрес Веб ГИС вашей организации, например https://demo.nextgis.com.
+* NGW_LOGIN - имя пользователя с необходимыми правами, если не задано, то подключение будет гостевым.
+* NGW_APIKEY - пароль пользователя.
+
+Добавьте эти переменные в docker-compose по образцу выше.
 
 После этого можно запускать стек Docker Compose, вначале рекомендуется запустить сервис postgres, подождать полминуты и затем уже запустить остальное:
 
