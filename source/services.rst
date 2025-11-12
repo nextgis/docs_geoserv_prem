@@ -206,4 +206,20 @@
 
 .. important:: Обратите внимание, что задачи сидирования выполняются последовательно. Поэтому новая задача не начнёт выполняться до тех пор, пока не завершатся все предыдущие. 
 
+На странице Обзор сервисы, стоящие в очереди на сидирование, отмечены значком песочных часов.
 
+.. figure:: _static/overview_seeding_task_pending.png
+   :name: overview_seeding_task_pending_pic
+   :align: center
+   :width: 16cm
+
+   Сервис в очереди на сидирование
+
+Сервис, находящийся в процессе прогрева кэша, обозначается двигающимися по кругу стрелочками загрузки:
+
+.. figure:: _static/overview_seeding_task_in_progress.png
+   :name: overview_seeding_task_in_progress_pic
+   :align: center
+   :width: 16cm
+
+   Сервис в процессе сидирования
