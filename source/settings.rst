@@ -155,6 +155,30 @@ Log entries include status, process source, beginning and end times, task ID and
 
    Messages for a process in the log
 
+.. _storage:
+
+Storage
+----------
+
+In this section you can see the size of the cache stored in S3.
+
+To start estimation process, click **Estimate storage**. Beside this button you'll see the date and time of the last estimation.
+
+.. figure:: _static/settings_storage_en.png
+   :name: settings_storage_pic
+   :align: center
+   :width: 20cm
+
+   Overall storage usage
+
+Storage usage is estimated for all the cache combined as well as for individual services. To view the storage used by a particular service, open its preview. 
+
+.. figure:: _static/service_storage_en.png
+   :name: service_storage_pic
+   :align: center
+   :width: 20cm
+
+   Cache size of a service
 
 About
 -----------
