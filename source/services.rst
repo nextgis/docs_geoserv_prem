@@ -200,3 +200,22 @@ The task will appear on the tab. Here you can check its status: pending, in prog
    Status of the seeding task
 
 .. important:: Seeding tasks are processed sequentially, so the new task will start only after all the previous tasks are completed.
+
+On the Overview page the services that are waiting for their turn for seeding are marked by an hourglass:
+
+.. figure:: _static/overview_seeding_task_pending.png
+   :name: overview_seeding_task_pending_pic
+   :align: center
+   :width: 16cm
+
+   Seeding status: pending
+
+Service currently in process of seeding is marked by circular arrows:
+
+
+.. figure:: _static/overview_seeding_task_in_progress.png
+   :name: overview_seeding_task_in_progress_pic
+   :align: center
+   :width: 16cm
+
+   Seeding status: in progress
