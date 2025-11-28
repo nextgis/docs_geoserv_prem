@@ -101,7 +101,7 @@ Basemap
 
 In this section you can upload data that will be used for basemap services.
 
-You can upload a PBF file or choose an area from the dropdown list. Upload progress is displayed on the same tab. 
+You can upload a PBF file (you can `order on NextGIS Data <https://data.nextgis.com/en/region/custom/base/>`_) or choose an area from the dropdown list. Upload progress is displayed on the same tab. 
 
 .. figure:: _static/geosop_base_upload_en.png
    :name: geosop_base_upload
