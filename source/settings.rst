@@ -101,14 +101,21 @@ Basemap
 
 In this section you can upload data that will be used for basemap services.
 
-You can upload a PBF file or choose an area from the dropdown list. If you use custom PBF, upload progress is displayed on the same tab and in the Log tab. 
+You can upload a PBF file or choose an area from the dropdown list. Upload progress is displayed on the same tab. 
+
+.. figure:: _static/geosop_base_upload_en.png
+   :name: geosop_base_upload
+   :align: center
+   :width: 20cm
+
+   Uploading data for basemap services
 
 When the files are uploaded, press **Submit new basemap data** on the top of the page. 
 
-.. figure:: _static/geosop_base_submit_en_2.png
+.. figure:: _static/geosop_base_submit_en_3.png
    :name: geosop_base4
    :align: center
-   :width: 16cm
+   :width: 20cm
 
    Submitting new Basemap data
 
