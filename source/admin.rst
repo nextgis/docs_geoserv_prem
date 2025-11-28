@@ -152,16 +152,21 @@ Go to the About page, it must look like this:
 
 
 
-.. _nggs_prem_admin_cache:
+.. _nggs_prem_admin_upgrade:
 
-Clear cache
+Upgrade
 ------------
 
-After a service is deleted, its cache remains. To remove the cache delete the following folders:
+**Step 1:** Stop all services:
 
-.. code-block::
+.. code-block:: shell
 
-   /data/geoservices/ras/$ID/
-   /data/geoservices/vec/$ID/
+  $ docker-compose stop
 
-``$ID`` is the ID of the deleted service. The ``vec`` folder is formed only for basemap services that generate vector tiles.
+**Step 2:** Update ``IMAGE_VERSION`` value in ``.env`` file.
+
+**Step 3:** Start all services:
+
+.. code-block:: shell
+
+  $ docker-compose up -d
