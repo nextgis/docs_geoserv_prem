@@ -14,3 +14,4 @@ NextGIS Geoservices on-premise
    services
    settings
    admin
+   changelog
