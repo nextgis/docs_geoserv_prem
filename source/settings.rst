@@ -56,9 +56,9 @@ API ключ понадобится например для работы с се
 
 В этом разделе загружаются данные OpenStreetMap, которые будут использоваться для создания сервисов базовой карты. На основе одного набора данных можно создавать сколько угодно сервисов разного охвата и масштабных уровней.
 
-Данные для базовой карты можно загрузить в формате PBF (можно `заказать на NextGIS Data <https://data.nextgis.com/ru/region/custom/base/>`_).
+Данные для базовой карты загружаются в формате PBF (можно `заказать на NextGIS Data <https://data.nextgis.com/ru/region/custom/base/>`_).
 
-.. figure:: _static/geosop_base_upload_ru.png
+.. figure:: _static/geosop_base_upload_ru_2.png
    :name: geosop_base_upload
    :align: center
    :width: 20cm
