@@ -66,7 +66,7 @@ On the server where you plan to deploy GeoServices, create the ``/srv/geoservice
 	BM_DB_PASSWORD=secret2
 	ADMIN_PASSWORD=secret3
 
-To connect NextGIS Geoservices to your NextGIS Web instance also add these environmental variables: 
+To connect NextGIS GeoServices to your NextGIS Web instance also add these environmental variables: 
 
 * NGW_URL - your company WEB GIS url, i.e. https://demo.nextgis.com.
 * NGW_LOGIN - user name with sufficient permissions, if empty - guest connection will be used.
