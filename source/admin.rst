@@ -161,7 +161,7 @@ Upgrade
 
 .. code-block:: shell
 
-  $ docker-compose stop
+  $ docker compose stop
 
 **Step 2:** Update ``IMAGE_VERSION`` value in ``.env`` file.
 
@@ -169,4 +169,4 @@ Upgrade
 
 .. code-block:: shell
 
-  $ docker-compose up -d
+  $ docker compose up -d
