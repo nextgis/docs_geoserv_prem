@@ -156,7 +156,7 @@ NextGIS GeoServices использует одну точку подключен�
 
 .. code-block:: shell
 
-  $ docker-compose stop
+  $ docker compose stop
 
 **Шаг 2:** Обновите значение ``IMAGE_VERSION`` в файле ``.env``.
 
@@ -164,4 +164,4 @@ NextGIS GeoServices использует одну точку подключен�
 
 .. code-block:: shell
 
-  $ docker-compose up -d
+  $ docker compose up -d
