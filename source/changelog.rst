@@ -1,4 +1,4 @@
-Latest changes
+Changelog
 ================
 
 **2.21 released on 17.12.2025**
