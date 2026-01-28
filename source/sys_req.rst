@@ -5,6 +5,8 @@ To install NextGIS GeoServices On-Premise you need a physical or virtual server.
 
 It is possible to use the same server where NextGIS Web and NextGIS ID are deployed, but to avoid conflict the server must not be used for other tasks (as file or mail server, PostGIS server etc).
 
+.. note:: NextGIS team can perform the installation or upgrade remotely, if you provide remote access that fits the `requirements <https://docs.nextgis.com/docs_ngweb/source/remote.html>`_.
+
 .. _nggs_sys_req_hardw:
 
 Minimum hardware requirements
