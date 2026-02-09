@@ -32,4 +32,17 @@
 Обновление до версии 2.20.x с версии 2.19.x
 -------------------------------------------
 
-В конфигурационный файл ``docker-compose.yaml`` добавьте сервис ``node-renderer``, в сервис ``app`` добавьте переменную окружения ``NODE_RENDERER_SECRET``:.. code-block:: yaml  app:    ...    environment:      NODE_RENDERER_SECRET: node-renderer-secret  ...  node-renderer:    image: ${IMAGE_BASE}/node-renderer:${IMAGE_VERSION}    restart: unless-stopped    environment:      SECRET: node-renderer-secret
+В конфигурационный файл ``docker-compose.yaml`` добавьте сервис ``node-renderer``, в сервис ``app`` добавьте переменную окружения ``NODE_RENDERER_SECRET``:
+
+.. code-block:: yaml  
+   
+  app:
+    ...
+    environment:
+      NODE_RENDERER_SECRET: node-renderer-secret
+  ...
+  node-renderer:
+    image: ${IMAGE_BASE}/node-renderer:${IMAGE_VERSION}
+    restart: unless-stopped
+    environment:
+      SECRET: node-renderer-secret
