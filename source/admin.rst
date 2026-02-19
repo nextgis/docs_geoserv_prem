@@ -2,8 +2,8 @@
 
 .. _docs_geoserv_prem_admin:
 
-Administrator manual for NextGIS GeoServices
-=====================================================
+Installation (Administrator manual)
+===================================
 
 Introduction
 -------------
@@ -152,21 +152,4 @@ Go to the About page, it must look like this:
 
 
 
-.. _nggs_prem_admin_upgrade:
 
-Upgrade
-------------
-
-**Step 1:** Stop all services:
-
-.. code-block:: shell
-
-  $ docker compose stop
-
-**Step 2:** Update ``IMAGE_VERSION`` value in ``.env`` file.
-
-**Step 3:** Start all services:
-
-.. code-block:: shell
-
-  $ docker compose up -d
