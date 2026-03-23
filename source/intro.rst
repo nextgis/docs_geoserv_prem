@@ -22,4 +22,4 @@ In `Services <https://docs.nextgis.com/docs_geoserv_prem/source/services.html>`_
 
 `Settings <https://docs.nextgis.com/docs_geoserv_prem/source/settings.html>`_ - here users manage their profile, other users, user groups, map settings and logs.
 
-**Overview** has general information about the services that are used. This block is in development.
+**Overview** shows general information about created services.
