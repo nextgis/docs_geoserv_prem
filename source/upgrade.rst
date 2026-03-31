@@ -26,9 +26,9 @@ To upgrade from one version to another follow these steps:
 
   $ docker compose stop
 
-**Step 3:** Update the value of ``IMAGE_VERSION`` in the file ``.env``.
+**Step 3:** In the file ``.env`` change the value of ``IMAGE_VERSION`` to the code of the version you're upgrading to.
 
-If you haven't modified the configuration, you can instead download the current config template (`docker-compose-2.21.0.tar.bz2 <https://nextgis.com/onpremise/geoservices/docker-compose-2.21.0.tar.bz2>`_, where 2.21.0 is the latest version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
+If you haven't modified the configuration, you can instead `download the current config template <https://docs.nextgis.com/docs_geoserv_prem/source/admin.html#nextgis-geoservices>`_ and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
 
 **Step 4:** Restart all the services:
 
