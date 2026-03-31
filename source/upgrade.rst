@@ -72,7 +72,7 @@ If no modifications were made, you can instead download a current template at St
 
 
 
-Upgrade to 2.21.x from 2.20.x
+Upgrade to 2.22.x from 2.20.x
 -------------------------------------------
 
 No additional steps needed, proceed with the standard steps described above.
