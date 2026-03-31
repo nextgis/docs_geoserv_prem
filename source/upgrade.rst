@@ -4,8 +4,6 @@ Upgrade
 ==========
 
 
-.. note:: If you need to perform an upgrade in a closed network, contact us at support@nextgis.com
-
 The version number for NextGIS GeoServices On-Premise contains three parts in ``A.B.C`` pattern, where ``A.B`` is the main version number and ``C`` is a patch version.
 Updates between main versions must be performed step by step, without skipping a version. So if your current version is ``2.18.0`` and you wish to update to ``2.20.0``, you need to update to ``2.19.0`` first, and only then to ``2.20.0``. If there are patched versions (e.g. ``2.18.1``, ``2.18.2`` and so on), upgrade to the latest patched version of the main version.
 
@@ -76,3 +74,5 @@ Upgrade to 2.22.x from 2.20.x
 -------------------------------------------
 
 No additional steps needed, proceed with the standard steps described above.
+
+.. note:: If you need to perform an upgrade in a closed network, contact us at support@nextgis.com
