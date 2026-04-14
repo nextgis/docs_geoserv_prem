@@ -52,7 +52,7 @@
 Можно создавать сервисы трёх типов:
 
 * `Базовая карта <https://docs.nextgis.ru/docs_geoserv_prem/source/services.html#gs-prem-basemap>`_ - на основе данных OpenStreetMaps, загруженных на портал GeoServices в формате PBF;
-* `NGW <https://docs.nextgis.ru/docs_geoserv_prem/source/services.html#ngw>`_ - на основе веб-карты, созданной на платформе NextGIS;
+* `NextGIS Web <https://docs.nextgis.ru/docs_geoserv_prem/source/services.html#ngw>`_ - на основе веб-карты, созданной на платформе NextGIS;
 * `Внешний <https://docs.nextgis.ru/docs_geoserv_prem/source/services.html#tms>`_ - TMS-сервис из внешнего источника.
 
 
@@ -62,7 +62,7 @@
 
 .. _gs_prem_basemap:
 
-Сервис базовой карты
+Сервис: Базовая карта
 ------------------------
 
 В качестве основы для создания сервиса можно использовать также данные OpenStreetMaps в формате PBF. Эти данные загружаются в `настройках базовой карты <https://docs.nextgis.ru/docs_geoserv_prem/source/settings.html#geoserv-prem-set-basemap>`_.
@@ -87,7 +87,7 @@
 
 .. _gs_prem_ngw_webmaps:
 
-Сервис из веб-карты NGW
+Сервис: NextGIS Web
 ------------------------
 
 `NextGIS Web <https://nextgis.ru/nextgis-web/>`_ - это серверная геоинформационная система, предназначенная для сбора, хранения, визуализации и обработки пространственных данных.
@@ -127,8 +127,8 @@
 
 .. _gs_prem_tms:
 
-Внешний TMS
-------------
+Сервис: внешний
+---------------
 
 Геосервисы позволяют добавлять внешние TMS для их дальнейшего кэширования и использования.
 
