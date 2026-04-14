@@ -26,6 +26,8 @@ Contact your IT department to choose endpoints you wish to use and note them dow
 Install and configure Docker
 ----------------------------
 
+.. important:: All steps in this section must be performed by the ``root`` user. If you use ``sudo`` to avoid mixing up the commands, we recommend first running ``sudo -i`` to get a fully functional root user session.
+
 If the server does not yet have Docker Engine and Docker Compose installed, first you need to install them or update them to the latest versions:
 
 * `Docker Engine <https://docs.docker.com/engine/install/>`_
@@ -42,6 +44,8 @@ If the software is deployed to a server without Internet access, contact support
 
 Install NextGIS GeoServices
 ---------------------------
+
+.. important:: All steps in this section must be performed by the ``root`` user. If you use ``sudo`` to avoid mixing up the commands, we recommend first running ``sudo -i`` to get a fully functional root user session.
 
 On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (`docker-compose-2.22.0.tar.bz2 <https://nextgis.com/onpremise/geoservices/docker-compose-2.22.0.tar.bz2>`_, where 2.22.0 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
 
@@ -106,6 +110,8 @@ This completes the installation. If you use HTTPS, next `configure the reverse p
 
 Recommendations for reverse proxy setup
 ---------------------------------------------------
+
+.. important:: All steps in this section must be performed by the ``root`` user. If you use ``sudo`` to avoid mixing up the commands, we recommend first running ``sudo -i`` to get a fully functional root user session.
 
 To use HTTPS encryption we recommend setting up a reverse proxy server based on Nginx. For reference here's a fragment of the configuration file for geoservices.example.com:
 
