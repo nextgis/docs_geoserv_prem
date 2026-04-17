@@ -16,10 +16,10 @@
 * Логин
 * Пароль (можно сразу изменить)
 * Имя пользователя
-* Электронная почта
 
 
-.. figure:: _static/geosop_profile_ru.png
+
+.. figure:: _static/geosop_profile_ru_2.png
    :name: geosop_gr_profile1
    :align: center
    :width: 20cm
@@ -151,7 +151,7 @@ API ключ понадобится например для работы с се
 В разделе "Пользователи" показывается список созданных пользователей, по умолчанию в нём есть только один - Администратор.
 
 .. figure:: _static/geosop_gr_users_ru.png
-   :name: geosop_gr_users1
+   :name: geosop_gr_users_pic
    :align: center
    :width: 20cm
 
@@ -163,15 +163,12 @@ API ключ понадобится например для работы с се
 * Пароль
 * Имя пользователя
 
-Также можно указать: 
+Также можно включить пользователя в группу.
 
-* Электронную почту 
-* Группу, к которой он относится 
-
-.. figure:: _static/geosop_new_user_ru.png
-   :name: geosop_gr_users2
+.. figure:: _static/geosop_new_user_ru_2.png
+   :name: geosop_new_user_pic
    :align: center
-   :width: 16cm
+   :width: 20cm
 
    Создание нового пользователя в NextGIS GeoServices on-premise
 
@@ -182,7 +179,7 @@ API ключ понадобится например для работы с се
 Удалить пользователя можно несколькими способами: нажать на иконку с мусорным ведром в правом конце строки, или выделить пользователя и нажать кнопку **Удалить** над списком. Вторым способом можно удалять несколько пользователей сразу.
 
 .. figure:: _static/geosop_users_actions_ru.png
-   :name: geosop_gr_users3
+   :name: geosop_users_actions_pic
    :align: center
    :width: 20cm
 
@@ -191,7 +188,7 @@ API ключ понадобится например для работы с се
 При создании *группы пользователей* указывается её название и при необходимости выбираются пользователи из списка, которых нужно включить в эту группу.
 
 .. figure:: _static/geosop_new_group_ru.png
-   :name: geosop_gr_users4
+   :name: geosop_new_group_pic
    :align: center
    :width: 20cm
 
@@ -200,7 +197,7 @@ API ключ понадобится например для работы с се
 Группы пользователей также можно редактировать и удалять.
 
 .. figure:: _static/geosop_user_groups_ru.png
-   :name: geosop_gr_users4
+   :name: geosop_user_groups_pic
    :align: center
    :width: 20cm
 

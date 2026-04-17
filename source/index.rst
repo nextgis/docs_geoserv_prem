@@ -13,5 +13,7 @@ NextGIS GeoServices on-premise
    auth
    services
    settings
+   permissions
    admin
+   upgrade
    changelog
