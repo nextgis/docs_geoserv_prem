@@ -10,15 +10,6 @@ Changelog
 - Clear service permissions for deleted users and groups.
 - Improved internal database integrity.
 
-Fixed:
-
-* Cannot add Administrator to a group 
-* Redis cache not cleared
-* Service page must not have partent ID
-* Seeding external service in EPSG:3857
-* Unsupported symbols in SECRET for Node-Renderer
-* Deleting service leads to 404 undefined
-* Integer zooms in preview
 
 **2.21 released on 17.12.2025**
 
