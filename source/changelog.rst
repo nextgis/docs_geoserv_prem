@@ -3,12 +3,12 @@ Changelog
 
 **2.22 released on 31.03.2026**
 
-* Clear permissions after user or group is deleted
-* New permissions mechanism
-* OpenStreetMaps layers
-* Page 404
-* Support for WebP tiles
-* Fix copyright display
+- WebP format support for external services.
+- Fix seeding of external services with CRS EPSG:3857.
+- Fix tiles deletion from Redis during seeding.
+- Simplify service pages paths.
+- Clear service permissions for deleted users and groups.
+- Improved internal database integrity.
 
 Fixed:
 
