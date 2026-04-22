@@ -1,6 +1,25 @@
 Changelog
 ================
 
+**2.22 released on 31.03.2026**
+
+* Clear permissions after user or group is deleted
+* New permissions mechanism
+* OpenStreetMaps layers
+* Page 404
+* Support for WebP tiles
+* Fix copyright display
+
+Fixed:
+
+* Cannot add Administrator to a group 
+* Redis cache not cleared
+* Service page must not have partent ID
+* Seeding external service in EPSG:3857
+* Unsupported symbols in SECRET for Node-Renderer
+* Deleting service leads to 404 undefined
+* Integer zooms in preview
+
 **2.21 released on 17.12.2025**
 
 - Fix missing space symbol in font glyphs.
