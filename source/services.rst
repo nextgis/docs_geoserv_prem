@@ -55,7 +55,7 @@ The tiles for a newly created service are generated when first queried, so the f
 
 When you delete a service, its cache remains on the server. It can be `deleted by the administrator <https://docs.nextgis.com/docs_geoserv_prem/source/admin.html#clear-cache>`_.
 
-Basemap service
+Basemap
 ----------------
 
 This type of service is based on OpenStreetMap data in PBF format. It can be uploaded in the `basemap settings <https://docs.nextgis.com/docs_geoserv_prem/source/settings.html#basemap>`_.
@@ -63,6 +63,13 @@ This type of service is based on OpenStreetMap data in PBF format. It can be upl
 You can use one dataset to create multiple services with varying extent, style, zoom levels etc.
 
 Press **Create service** in the service group. Select "basemap" as type.
+
+.. figure:: _static/geosop_ngw1_en.png
+   :name: geosop_base_new_pic
+   :align: center
+   :width: 20cm
+
+   Button for creating new service
 
 Configure the following parameters:
 
@@ -86,7 +93,7 @@ To add vector tiles to QGIS create a new connection and enter the style URL and 
 
    Links of the default basemap service
 
-NGW Web Maps
+NextGIS Web 
 ------------
 
 `NextGIS Web <https://nextgis.com/nextgis-web/>`_ is a server-based geoinformation system for gathering, storing, visualising and analyzing geospacial data.
@@ -127,6 +134,8 @@ GeoServices allows to add, cache and use external TMS.
 
 .. important:: Before using an external service, check its terms of use. Violating terms of use may result in blocking from the service side.
 
+Open the service group and click **Create service**.
+
 .. figure:: _static/geosop_tms1_en.png
    :name: geosop_tms1
    :align: center
@@ -134,8 +143,12 @@ GeoServices allows to add, cache and use external TMS.
 
    Button for creating new service
 
-Enter name for the service, URL of the TMS service, select coordinate system and scale limits.
-The newly created service will appear in the selected group. Service can be modified or deleted.
+Enter the parameters:
+
+* name;
+* zoom levels;
+* URL of the TMS service;
+* select coordinate system.
 
 .. figure:: _static/geosop_tms2_en.png
    :name: geosop_tms2
@@ -144,6 +157,8 @@ The newly created service will appear in the selected group. Service can be modi
 
    Parameters for the new TMS service
 
+The newly created service will appear in the selected group. Service can be modified or deleted.
+
 .. figure:: _static/geosop_tms3_en.png
    :name: geosop_tms3
    :align: center
@@ -151,7 +166,33 @@ The newly created service will appear in the selected group. Service can be modi
 
    Newly created TMS sevice in the group
 
+.. _gs_prem_tiles:
 
+Tileset
+---------
+
+You can upload a ZIP-file containing pre-made tiles to create a service. For example, basemap tiles `ordered on NextGIS Data <https://data.nextgis.com/en/region/custom/tiles/?from-docs=1>`_.
+
+.. figure:: _static/geosop_tms1_en.png
+   :name: geosop_tiles_new_pic
+   :align: center
+   :width: 20cm
+
+   Button for creating new service
+
+All you need to do is enter a name for the service and upload a ZIP-file. Other parameters will be set automatically.
+
+
+.. figure:: _static/geosop_tiles_new_param_en.png
+   :name: geosop_tiles_new_param_pic
+   :align: center
+   :width: 16cm
+
+   Parameters of a Tileset serivce
+
+Click **Save** to complete.
+
+The newly created service will appear in the selected group. Services can be modified or deleted.
 
 .. _gs_prem_seed:
 
