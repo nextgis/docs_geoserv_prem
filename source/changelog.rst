@@ -1,6 +1,15 @@
 Changelog
 ================
 
+**2.23 released on 27.04.2026**
+
+- New service type - Tileset.
+- Create API key when registering OAuth user.
+- Select API key for URL templates.
+- Fixed default maximum zoom in API key create dialog.
+- Fix error when logging in using OAuth.
+- Fix user profile edit error.
+
 **2.22 released on 31.03.2026**
 
 - WebP format support for external services.
