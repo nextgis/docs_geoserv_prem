@@ -98,7 +98,7 @@ NextGIS Web
 
 `NextGIS Web <https://nextgis.com/nextgis-web/>`_ is a server-based geoinformation system for gathering, storing, visualising and analyzing geospacial data.
 
-NGW Web Maps service allows to created cached tile services based on Web Maps created in NextGIS Web.
+NextGIS Web service allows to created cached tile services based on Web Maps created in NextGIS Web.
 
 Administrator enters URL of a Web Map in NextGIS Web, service name and scale limits for caching.
 After that the service will appear in the list. Service can be modified or deleted.
