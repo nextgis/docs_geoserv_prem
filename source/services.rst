@@ -94,6 +94,14 @@
 
 Чтобы добавить сервис векторных тайлов в QGIS, создайте подключение, указав URL стиля и URL источника = Вектор XYZ в списке ссылок сервиса.
 
+Весь процесс также показан в видео:
+
+.. raw:: html
+
+   <iframe width="720" height="405" src="https://rutube.ru/play/embed/b61455cba90ffae263ee129d96c2a6d8/" style="border: none;" allow="clipboard-write; autoplay" allowFullScreen></iframe>	
+
+Посмотреть видео на `rutube <https://rutube.ru/video/b61455cba90ffae263ee129d96c2a6d8/>`_.
+
 .. _gs_prem_ngw_webmaps:
 
 Сервис: NextGIS Web
