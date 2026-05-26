@@ -78,7 +78,7 @@ Upgrade to 2.22.x from 2.20.x
 No additional steps needed, proceed with the standard steps described above.
 
 
-Upgrade to 2.23.x from 2.22.x
+Upgrade to 2.24.x from 2.22.x
 -------------------------------
 
 If you set up an OAuth server with GeoServices, change path in the Redirect URI from ``/oauth2/callback`` to ``/oauth``.

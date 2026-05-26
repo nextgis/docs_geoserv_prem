@@ -1,6 +1,12 @@
 Changelog
 ================
 
+**2.24 released on 26.05.2026**
+
+- NextGIS Web service default extent set from constraining web map extent instead of initial.
+- External service tile size setting has been removed. Only 256x256 px tiles are supported.
+- Minor stability and error handling improvements.
+
 **2.23 released on 27.04.2026**
 
 - New service type - Tileset.
@@ -39,7 +45,6 @@ Changelog
 
 **2.19.0 released on 21.07.2025**
 
-
 - Show seeding services at overview page.
 - Delete tile cache on service delete.
 - Fix tile rendering of basemap and NGW services on certain scales.
@@ -49,7 +54,6 @@ Changelog
 - Fix delete basemap data button.
 
 **2.18.0 released on 14.05.2025**
-
 
 - Add picker with 3 default styles for basemap service.
 - Fix authorization and permissions check.
