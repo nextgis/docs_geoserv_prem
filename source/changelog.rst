@@ -45,6 +45,7 @@ Changelog
 
 **2.19.0 released on 21.07.2025**
 
+
 - Show seeding services at overview page.
 - Delete tile cache on service delete.
 - Fix tile rendering of basemap and NGW services on certain scales.
@@ -54,6 +55,7 @@ Changelog
 - Fix delete basemap data button.
 
 **2.18.0 released on 14.05.2025**
+
 
 - Add picker with 3 default styles for basemap service.
 - Fix authorization and permissions check.
