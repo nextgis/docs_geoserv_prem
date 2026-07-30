@@ -35,17 +35,16 @@ If you haven't modified the configuration, you can instead `download the current
   $ docker compose up -d
 
 
-For versions 2.16.1 and below
-------------------------------
 
-If you have GeoServices 2.16.0 or earlier, contact us at support@nextgis.com.
+Upgrade to 2.25.x from 2.22.x
+-------------------------------
 
+If you set up an OAuth server with GeoServices, change path in the Redirect URI from ``/oauth2/callback`` to ``/oauth``.
 
-Upgrade to 2.17.x - 2.19.x
-----------------------------
+Upgrade to 2.22.x from 2.20.x
+-------------------------------------------
 
 No additional steps needed, proceed with the standard steps described above.
-
 
 Upgrade to 2.20.x from 2.19.x
 -------------------------------
@@ -71,17 +70,15 @@ After that perform the upgrade as described above.
 
 If no modifications were made, you can instead download a current template at Step 3 and unpack it.
 
-
-Upgrade to 2.22.x from 2.20.x
--------------------------------------------
+Upgrade to 2.17.x - 2.19.x
+----------------------------
 
 No additional steps needed, proceed with the standard steps described above.
 
+For versions 2.16.1 and below
+------------------------------
 
-Upgrade to 2.25.x from 2.22.x
--------------------------------
-
-If you set up an OAuth server with GeoServices, change path in the Redirect URI from ``/oauth2/callback`` to ``/oauth``.
+If you have GeoServices 2.16.0 or earlier, contact us at support@nextgis.com.
 
 
 .. note:: If you need to perform an upgrade in a closed network, contact us at support@nextgis.com
