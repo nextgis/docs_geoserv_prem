@@ -1,6 +1,12 @@
 Changelog
 ================
 
+**2.25 released on 29.06.2026**
+
+- Support tileset create from MBTiles.
+- Service preview without browser cache.
+- Release info on "About" page.
+
 **2.24 released on 26.05.2026**
 
 - NextGIS Web service default extent set from constraining web map extent instead of initial.
@@ -24,7 +30,6 @@ Changelog
 - Simplify service pages paths.
 - Clear service permissions for deleted users and groups.
 - Improved internal database integrity.
-
 
 **2.21 released on 17.12.2025**
 
@@ -78,4 +83,3 @@ Changelog
 - A lot of fixes for seeding.
 - Own Redis container based on Ubuntu 24.04.
 - Experimental Maplibre GL renderer support.
-

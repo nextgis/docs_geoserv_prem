@@ -47,22 +47,20 @@ Install NextGIS GeoServices
 
 .. important:: All steps in this section must be performed by the ``root`` user. If you use ``sudo`` to avoid mixing up the commands, we recommend first running ``sudo -i`` to get a fully functional root user session.
 
-On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (`docker-compose-2.24.0.tar.bz2 <https://nextgis.com/onpremise/geoservices/docker-compose-2.24.0.tar.bz2>`_, where 2.24.0 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
+On the server where you plan to deploy GeoServices, create the ``/srv/geoservices`` directory, then go to it, download the configuration template (`docker-compose-2.25.0.tar.bz2 <https://nextgis.com/onpremise/geoservices/docker-compose-2.25.0.tar.bz2>`_, where 2.25.0 is the current version) and unpack it. If the server does not have Internet access, download the file on another PC and transfer it to the server.
 
 .. code-block::
 
 	$ mkdir /srv/geoservices
 	$ cd /srv/geoservices
-	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.24.0.tar.bz2
-	$ tar jxf docker-compose-2.24.0.tar.bz2
+	$ wget https://nextgis.com/onpremise/geoservices/docker-compose-2.25.0.tar.bz2
+	$ tar jxf docker-compose-2.25.0.tar.bz2
 	Edit the .env file in a text editor and enter the values for these environmental variables: POSTGRES_PASSWORD, DB_PASSWORD, BM_DB_PASSWORD (must have the same values), ADMIN_PASSWORD and SESSION_KEY. In the end you should get something like this:
-	IMAGE_VERSION=2.24.0
+	IMAGE_VERSION=2.25.0
 	IMAGE_BASE=cr.nextgis.com/geoservices
 	COMPOSE_BIND=0.0.0.0
+	NO_PROXY=app,postgres,redis,s3,node-renderer
 	
-	DEBUG=false
-	S3_SSL=false
-	EXT_SOURCES_SUPPORT=false
 	POSTGRES_USER=geoservices
 	SESSION_KEY=secret1
 	POSTGRES_PASSWORD=secret2
