@@ -35,16 +35,30 @@ If you haven't modified the configuration, you can instead `download the current
   $ docker compose up -d
 
 
+Upgrade to 2.25.x from 2.24.x
+----------------------------
 
-Upgrade to 2.25.x from 2.22.x
+No additional steps needed, proceed with the standard steps to update.
+
+Upgrade to 2.24.x from 2.23.x
+----------------------------
+
+No additional steps needed, proceed with the standard steps to update.
+
+Upgrade to 2.23.x from 2.22.x
 -------------------------------
 
 If you set up an OAuth server with GeoServices, change path in the Redirect URI from ``/oauth2/callback`` to ``/oauth``.
 
-Upgrade to 2.22.x from 2.20.x
--------------------------------------------
+Upgrade to 2.22.x from 2.21.x
+----------------------------
 
-No additional steps needed, proceed with the standard steps described above.
+No additional steps needed, proceed with the standard steps to update.
+
+Upgrade to 2.21.x from 2.20.x
+----------------------------
+
+No additional steps needed, proceed with the standard steps to update.
 
 Upgrade to 2.20.x from 2.19.x
 -------------------------------
@@ -70,10 +84,20 @@ After that perform the upgrade as described above.
 
 If no modifications were made, you can instead download a current template at Step 3 and unpack it.
 
-Upgrade to 2.17.x - 2.19.x
+Upgrade to 2.19.x from 2.18.x
 ----------------------------
 
-No additional steps needed, proceed with the standard steps described above.
+No additional steps needed, proceed with the standard steps to update.
+
+Upgrade to 2.18.x from 2.17.x
+----------------------------
+
+No additional steps needed, proceed with the standard steps to update.
+
+Upgrade to 2.17.x from 2.16.1
+----------------------------
+
+No additional steps needed, proceed with the standard steps to update.
 
 For versions 2.16.1 and below
 ------------------------------
