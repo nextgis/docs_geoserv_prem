@@ -19,7 +19,6 @@ To upgrade from one version to another follow these steps:
 
 **Step 2:** Stop all the services:
 
-
 .. code-block:: shell
 
   $ docker compose stop
@@ -34,6 +33,10 @@ If you haven't modified the configuration, you can instead `download the current
 
   $ docker compose up -d
 
+Upgrade to 2.26.x from 2.25.x
+----------------------------
+
+No additional steps needed, proceed with the standard steps to update.
 
 Upgrade to 2.25.x from 2.24.x
 ----------------------------

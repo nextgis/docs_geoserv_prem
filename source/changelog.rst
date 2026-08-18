@@ -1,6 +1,14 @@
 Changelog
 ================
 
+**2.26 released on 18.08.2026**
+
+- Add languages: French, Spanish.
+- MapLibre for Node.js upgraded to 6.4.1.
+- Add OpenType fonts support.
+- Improved initial map extent on service preview.
+- Minor interface improvements.
+
 **2.25 released on 29.06.2026**
 
 - Support tileset create from MBTiles.
